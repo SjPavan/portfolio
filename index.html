@@ -1,897 +1,287 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>S J Pavan | AI & LLM Systems Engineer</title>
-  <meta name="description" content="Portfolio of S J Pavan — Applied AI Engineer specializing in Generative AI architectures, autonomous agent workflows, and production RAG pipelines.">
-  <!-- Tailwind CSS CDN -->
+  <meta name="description" content="Portfolio of S J Pavan - AI & LLM Systems Engineer. Building autonomous agents, RAG pipelines, and production AI systems.">
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter & JetBrains Mono -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- FontAwesome for clean icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            ai: {
-              50: '#f0f9ff',
-              400: '#38bdf8',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              accent: '#6366f1',
-              emerald: '#10b981',
-              dark: '#0a0d14',
-              surface: '#111726',
-              border: '#1e293b'
-            }
-          }
-        }
-      }
-    }
-  </script>
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #070a11;
-      color: #e2e8f0;
-    }
-    .code-font {
-      font-family: 'JetBrains Mono', monospace;
-    }
-    /* Subtle grid background */
-    .bg-grid-pattern {
-      background-image: radial-gradient(rgba(99, 102, 241, 0.12) 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-    .gradient-border {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(14, 165, 233, 0.2), rgba(16, 185, 129, 0.3));
-    }
-    .glass-panel {
-      background: rgba(17, 23, 38, 0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .glass-card {
-      background: rgba(15, 20, 32, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      transition: all 0.25s ease-in-out;
-    }
-    .glass-card:hover {
-      border-color: rgba(99, 102, 241, 0.4);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.15);
-    }
-    .neon-badge {
-      box-shadow: 0 0 12px -2px rgba(16, 185, 129, 0.35);
-    }
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #070a11;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #334155;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%); color: #e0e0e0; }
+    .navbar { background: rgba(30, 30, 46, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .navbar a { color: #e0e0e0; text-decoration: none; transition: all 0.3s ease; }
+    .navbar a:hover { color: #00d9ff; transform: translateY(-2px); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .hero { background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%); padding: 100px 0; text-align: center; }
+    .hero h1 { font-size: 3.5rem; font-weight: 900; color: #00d9ff; margin-bottom: 20px; text-shadow: 0 4px 8px rgba(0, 217, 255, 0.3); }
+    .hero p { font-size: 1.3rem; color: #b0b0b0; margin-bottom: 30px; }
+    .btn { display: inline-block; padding: 12px 30px; margin: 10px 10px 0 0; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; cursor: pointer; border: none; }
+    .btn-primary { background: linear-gradient(135deg, #00d9ff, #0099cc); color: #1e1e2e; }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 217, 255, 0.4); }
+    .btn-secondary { background: transparent; border: 2px solid #00d9ff; color: #00d9ff; }
+    .btn-secondary:hover { background: #00d9ff; color: #1e1e2e; }
+    section { padding: 80px 0; border-bottom: 1px solid rgba(0, 217, 255, 0.1); }
+    .section-title { font-size: 2.5rem; font-weight: 800; color: #00d9ff; margin-bottom: 50px; text-align: center; }
+    .card { background: rgba(45, 45, 68, 0.8); border: 1px solid rgba(0, 217, 255, 0.2); border-radius: 12px; padding: 30px; margin-bottom: 20px; backdrop-filter: blur(10px); transition: all 0.3s ease; }
+    .card:hover { border-color: rgba(0, 217, 255, 0.5); box-shadow: 0 8px 20px rgba(0, 217, 255, 0.1); transform: translateY(-5px); }
+    .skill-tag { display: inline-block; background: rgba(0, 217, 255, 0.1); border: 1px solid rgba(0, 217, 255, 0.3); color: #00d9ff; padding: 8px 16px; border-radius: 20px; margin: 5px; font-size: 0.9rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+    .footer { background: rgba(20, 20, 30, 0.95); padding: 40px 0; text-align: center; color: #808080; }
+    .social-icon { display: inline-block; width: 50px; height: 50px; background: rgba(0, 217, 255, 0.1); border: 2px solid rgba(0, 217, 255, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 10px; cursor: pointer; transition: all 0.3s ease; }
+    .social-icon:hover { background: #00d9ff; color: #1e1e2e; transform: scale(1.1); }
+    .timeline { position: relative; padding-left: 40px; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, #00d9ff 0%, transparent 100%); }
+    .timeline-item { position: relative; padding: 20px 0; }
+    .timeline-item::before { content: ''; position: absolute; left: -30px; top: 20px; width: 12px; height: 12px; background: #00d9ff; border-radius: 50%; box-shadow: 0 0 10px rgba(0, 217, 255, 0.5); }
   </style>
 </head>
-<body class="bg-[#070a11] text-slate-200 antialiased selection:bg-indigo-500 selection:text-white">
+<body>
 
-  <!-- Navigation Bar -->
-  <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-indigo-600 via-sky-500 to-emerald-400 p-[1.5px] transition group-hover:scale-105">
-          <div class="w-full h-full bg-[#0b0f19] rounded-[7px] flex items-center justify-center">
-            <span class="code-font text-xs font-bold text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-indigo-400">SJ</span>
-          </div>
-        </div>
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 20px;">
+    <div style="font-size: 1.5rem; font-weight: 900; color: #00d9ff;">S J Pavan</div>
+    <div>
+      <a href="#about" style="margin: 0 15px;">About</a>
+      <a href="#skills" style="margin: 0 15px;">Skills</a>
+      <a href="#experience" style="margin: 0 15px;">Experience</a>
+      <a href="#projects" style="margin: 0 15px;">Projects</a>
+      <a href="#contact" style="margin: 0 15px;">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h1>AI & LLM Systems Engineer</h1>
+    <p>Building Production-Ready Autonomous Agents & RAG Pipelines</p>
+    <div>
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    <div class="card">
+      <p style="font-size: 1.1rem; line-height: 1.8; color: #c0c0c0;">
+        I'm an Applied AI Engineer based in Bengaluru, India, specializing in <strong>Generative AI systems architecture</strong>, 
+        <strong>autonomous multi-agent frameworks</strong>, and <strong>high-precision RAG pipelines</strong>. 
+        With expertise in LangGraph, CrewAI, and LangChain, I design resilient AI solutions that scale production workloads 
+        while maintaining deterministic precision.
+      </p>
+      <p style="font-size: 1.1rem; line-height: 1.8; color: #c0c0c0; margin-top: 20px;">
+        Currently at <strong>Silicon Media Technologies</strong>, I lead technology research, market intelligence automation, 
+        and process optimization initiatives. I'm passionate about bridging the gap between cutting-edge LLM research and 
+        real-world enterprise applications.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+  <div class="container">
+    <h2 class="section-title">Technical Skills & Expertise</h2>
+    <div class="grid">
+      <div class="card">
+        <h3 style="color: #00d9ff; margin-bottom: 15px;"><i class="fas fa-brain"></i> Agentic Frameworks</h3>
         <div>
-          <span class="font-bold text-sm tracking-wide text-white group-hover:text-sky-400 transition">S J PAVAN</span>
-          <span class="block text-[10px] code-font text-slate-400 leading-none">AI / LLM Systems</span>
+          <span class="skill-tag">LangGraph</span>
+          <span class="skill-tag">CrewAI</span>
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">AutoAgents</span>
         </div>
+        <p style="margin-top: 15px; color: #a0a0a0; font-size: 0.95rem;">
+          Building autonomous multi-agent loops with dynamic state management and self-correcting workflows.
+        </p>
+      </div>
+      <div class="card">
+        <h3 style="color: #00d9ff; margin-bottom: 15px;"><i class="fas fa-database"></i> RAG & Retrieval</h3>
+        <div>
+          <span class="skill-tag">LlamaIndex</span>
+          <span class="skill-tag">Vector Search</span>
+          <span class="skill-tag">Embeddings</span>
+          <span class="skill-tag">Prompt Eng</span>
+        </div>
+        <p style="margin-top: 15px; color: #a0a0a0; font-size: 0.95rem;">
+          Designing contextual retrieval pipelines with hybrid search and semantic chunking strategies.
+        </p>
+      </div>
+      <div class="card">
+        <h3 style="color: #00d9ff; margin-bottom: 15px;"><i class="fas fa-server"></i> LLM Runtimes</h3>
+        <div>
+          <span class="skill-tag">vLLM</span>
+          <span class="skill-tag">Ollama</span>
+          <span class="skill-tag">NVIDIA APIs</span>
+          <span class="skill-tag">OpenAI</span>
+        </div>
+        <p style="margin-top: 15px; color: #a0a0a0; font-size: 0.95rem;">
+          Deploying models on local inference runtimes and multi-provider enterprise cloud APIs.
+        </p>
+      </div>
+      <div class="card">
+        <h3 style="color: #00d9ff; margin-bottom: 15px;"><i class="fas fa-cogs"></i> Backend & Automation</h3>
+        <div>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">n8n Workflows</span>
+          <span class="skill-tag">Git</span>
+        </div>
+        <p style="margin-top: 15px; color: #a0a0a0; font-size: 0.95rem;">
+          Enterprise integration, REST APIs, data transformation, and continuous incident management.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience">
+  <div class="container">
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3 style="color: #00d9ff; font-size: 1.3rem;">Technology Process Executive</h3>
+        <p style="color: #00d9ff; font-size: 0.95rem; margin: 5px 0; font-weight: 600;">Silicon Media Technologies Pvt. Ltd. • Bengaluru, India</p>
+        <p style="color: #808080; margin: 10px 0;">Oct 2023 — Present</p>
+        <ul style="color: #c0c0c0; margin-top: 10px; line-height: 1.8;">
+          <li>▸ Direct enterprise technology research and market data audits across B2B publications</li>
+          <li>▸ Synthesize multi-source datasets into executive-ready intelligence reports</li>
+          <li>▸ Spearhead process automation using custom Python scripts and prompt engineering</li>
+          <li>▸ Partner with editorial, research, and engineering teams for operational throughput</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3 style="color: #00d9ff; font-size: 1.3rem;">Digital Interaction Advisor</h3>
+        <p style="color: #00d9ff; font-size: 0.95rem; margin: 5px 0; font-weight: 600;">[24]7.ai • Bengaluru, India</p>
+        <p style="color: #808080; margin: 10px 0;">Aug 2022 — Dec 2022</p>
+        <ul style="color: #c0c0c0; margin-top: 10px; line-height: 1.8;">
+          <li>▸ Delivered omnichannel enterprise technical support under strict SLAs</li>
+          <li>▸ Maintained top-tier First Contact Resolution (FCR) and CSAT metrics</li>
+          <li>▸ Documented technical anomalies and partnered with Tier-2 teams for escalation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+  <div class="container">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3 style="color: #00d9ff; margin-bottom: 10px;">SJ Power UP Tool</h3>
+        <p style="color: #808080; font-size: 0.9rem; margin-bottom: 10px;">Multi-Provider LLM Prompt Orchestration System</p>
+        <p style="color: #c0c0c0; margin-bottom: 15px;">
+          An intelligent prompt engineering platform with dynamic template engine, secure credential isolation, and SSE streaming for multi-provider LLM API orchestration.
+        </p>
+        <div>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">NVIDIA APIs</span>
+          <span class="skill-tag">OpenAI</span>
+          <span class="skill-tag">JSON Schema</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="color: #00d9ff; margin-bottom: 10px;">B2B Intelligence Pipeline</h3>
+        <p style="color: #808080; font-size: 0.9rem; margin-bottom: 10px;">Autonomous Data Extraction & RAG</p>
+        <p style="color: #c0c0c0; margin-bottom: 15px;">
+          High-throughput Python pipeline with LangChain agents for autonomous domain auditing, firmographic extraction, and intelligent data categorization with 60% overhead reduction.
+        </p>
+        <div>
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">Vector Search</span>
+          <span class="skill-tag">Python Async</span>
+          <span class="skill-tag">Firmographics</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="color: #00d9ff; margin-bottom: 10px;">Medical Texture Analysis</h3>
+        <p style="color: #808080; font-size: 0.9rem; margin-bottom: 10px;">Osteoporosis Detection in Medical Imaging</p>
+        <p style="color: #c0c0c0; margin-bottom: 15px;">
+          Image processing algorithm in MATLAB for bone density micro-architectural analysis, enabling early diagnostic markers through spatial texture extraction.
+        </p>
+        <div>
+          <span class="skill-tag">MATLAB</span>
+          <span class="skill-tag">Computer Vision</span>
+          <span class="skill-tag">Biomedical Analysis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education Section -->
+<section style="background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(0, 153, 204, 0.05));">
+  <div class="container">
+    <h2 class="section-title">Education</h2>
+    <div class="grid">
+      <div class="card">
+        <h4 style="color: #00d9ff; font-size: 1.1rem;">B.Tech Electronics & Communication</h4>
+        <p style="color: #808080; margin: 5px 0;">Sri Venkateswara College of Engineering & Tech</p>
+        <p style="color: #c0c0c0; margin-top: 10px;"><strong>Year:</strong> 2020 | <strong>Aggregate:</strong> 70%</p>
+      </div>
+      <div class="card">
+        <h4 style="color: #00d9ff; font-size: 1.1rem;">Intermediate (MPC)</h4>
+        <p style="color: #808080; margin: 5px 0;">Board of Intermediate Education, Andhra Pradesh</p>
+        <p style="color: #c0c0c0; margin-top: 10px;"><strong>Year:</strong> 2016 | <strong>Aggregate:</strong> 70%</p>
+      </div>
+      <div class="card">
+        <h4 style="color: #00d9ff; font-size: 1.1rem;">Secondary School Certificate</h4>
+        <p style="color: #808080; margin: 5px 0;">Board of Secondary Education, Andhra Pradesh</p>
+        <p style="color: #c0c0c0; margin-top: 10px;"><strong>Year:</strong> 2014 | <strong>Aggregate:</strong> 83%</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <div class="container">
+    <h2 class="section-title">Get In Touch</h2>
+    <p style="text-align: center; color: #c0c0c0; margin-bottom: 40px; font-size: 1.1rem;">
+      Currently based in Bengaluru, India. Open for AI Engineering, LLM Systems, and Process Automation roles.
+    </p>
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+      <a href="mailto:pavandilip003@gmail.com" class="card" style="text-align: center; text-decoration: none;">
+        <i class="fas fa-envelope" style="font-size: 2rem; color: #00d9ff; margin-bottom: 10px;"></i>
+        <h4 style="color: #e0e0e0;">Email</h4>
+        <p style="color: #c0c0c0; word-break: break-all;">pavandilip003@gmail.com</p>
       </a>
-
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-7 text-xs code-font font-medium text-slate-300">
-        <a href="#about" class="hover:text-sky-400 transition flex items-center gap-1.5"><span class="text-indigo-400">01.</span>// About</a>
-        <a href="#skills" class="hover:text-sky-400 transition flex items-center gap-1.5"><span class="text-indigo-400">02.</span>// Architecture</a>
-        <a href="#projects" class="hover:text-sky-400 transition flex items-center gap-1.5"><span class="text-indigo-400">03.</span>// Projects</a>
-        <a href="#experience" class="hover:text-sky-400 transition flex items-center gap-1.5"><span class="text-indigo-400">04.</span>// Experience</a>
-        <a href="#terminal" class="hover:text-sky-400 transition flex items-center gap-1.5"><span class="text-indigo-400">05.</span>// Terminal</a>
-        <a href="#contact" class="hover:text-sky-400 transition flex items-center gap-1.5"><span class="text-indigo-400">06.</span>// Contact</a>
-      </nav>
-
-      <!-- Action Button -->
-      <div class="flex items-center gap-3">
-        <a href="#contact" class="inline-flex items-center gap-2 px-3.5 py-1.5 text-xs font-semibold code-font rounded-md bg-indigo-600 hover:bg-indigo-500 text-white shadow-sm transition">
-          <span>Get in Touch</span>
-          <i class="fa-solid fa-arrow-right text-[10px]"></i>
-        </a>
-      </div>
+      <a href="tel:+916300648679" class="card" style="text-align: center; text-decoration: none;">
+        <i class="fas fa-phone" style="font-size: 2rem; color: #00d9ff; margin-bottom: 10px;"></i>
+        <h4 style="color: #e0e0e0;">Phone / WhatsApp</h4>
+        <p style="color: #c0c0c0;">+91 6300648679</p>
+      </a>
+      <a href="https://linkedin.com/in/pavansi3" target="_blank" class="card" style="text-align: center; text-decoration: none;">
+        <i class="fab fa-linkedin" style="font-size: 2rem; color: #00d9ff; margin-bottom: 10px;"></i>
+        <h4 style="color: #e0e0e0;">LinkedIn</h4>
+        <p style="color: #c0c0c0;">linkedin.com/in/pavansi3</p>
+      </a>
+      <a href="https://github.com/sjpavan" target="_blank" class="card" style="text-align: center; text-decoration: none;">
+        <i class="fab fa-github" style="font-size: 2rem; color: #00d9ff; margin-bottom: 10px;"></i>
+        <h4 style="color: #e0e0e0;">GitHub</h4>
+        <p style="color: #c0c0c0;">github.com/sjpavan</p>
+      </a>
     </div>
-  </header>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p>&copy; 2024 S J Pavan. All rights reserved.</p>
+    <p style="margin-top: 10px; font-size: 0.9rem;">Bengaluru, India • AI & LLM Systems Engineer</p>
+  </div>
+</footer>
 
-  <!-- Hero Section -->
-  <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-grid-pattern overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#070a11]/80 to-[#070a11] pointer-events-none"></div>
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <!-- Left Hero Content -->
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs code-font neon-badge">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>AVAILABLE FOR PRODUCTION AI ROLES • BENGALURU, INDIA</span>
-          </div>
-
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
-            Engineering <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-400 to-emerald-400">Autonomous Agent Workflows</span> & High-Precision RAG.
-          </h1>
-
-          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
-            Applied AI & Technology Professional architecting resilient Generative AI systems, multi-agent frameworks (<span class="text-sky-300 font-medium">LangGraph, CrewAI, LangChain</span>), and automated enterprise intelligence pipelines that eliminate manual operational overhead.
-          </p>
-
-          <!-- Metrics Strip -->
-          <div class="grid grid-cols-3 gap-3 pt-2 max-w-lg">
-            <div class="p-3 rounded-lg border border-slate-800 bg-[#0c111d]">
-              <div class="text-xl sm:text-2xl font-bold text-white code-font">60%</div>
-              <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5">Research Overhead Cut</div>
-            </div>
-            <div class="p-3 rounded-lg border border-slate-800 bg-[#0c111d]">
-              <div class="text-xl sm:text-2xl font-bold text-sky-400 code-font">Multi-LLM</div>
-              <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5">NVIDIA • OpenAI • Ollama</div>
-            </div>
-            <div class="p-3 rounded-lg border border-slate-800 bg-[#0c111d]">
-              <div class="text-xl sm:text-2xl font-bold text-emerald-400 code-font">100%</div>
-              <div class="text-[11px] text-slate-400 uppercase tracking-wider mt-0.5">Production-Ready Code</div>
-            </div>
-          </div>
-
-          <!-- CTA Buttons -->
-          <div class="flex flex-wrap items-center gap-4 pt-2">
-            <a href="#projects" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-indigo-600 to-sky-600 hover:from-indigo-500 hover:to-sky-500 text-white font-medium text-sm transition shadow-lg shadow-indigo-500/25 flex items-center gap-2">
-              <i class="fa-solid fa-layer-group text-xs"></i>
-              <span>Explore AI Systems</span>
-            </a>
-            <a href="#terminal" class="px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-800/60 hover:bg-slate-800 text-slate-200 font-medium text-sm transition flex items-center gap-2 code-font">
-              <i class="fa-solid fa-terminal text-xs text-sky-400"></i>
-              <span>Launch Terminal</span>
-            </a>
-            <a href="https://github.com/sjpavan" target="_blank" class="p-2.5 rounded-lg border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-white transition">
-              <i class="fa-brands fa-github text-lg"></i>
-            </a>
-            <a href="https://linkedin.com/in/pavansi3" target="_blank" class="p-2.5 rounded-lg border border-slate-800 hover:border-slate-700 text-slate-400 hover:text-white transition">
-              <i class="fa-brands fa-linkedin-in text-lg"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- Right Hero: Live Simulated Model Pipeline Card -->
-        <div class="lg:col-span-5">
-          <div class="rounded-xl border border-slate-800 bg-[#0b0f1a] shadow-2xl overflow-hidden">
-            <!-- Window header -->
-            <div class="px-4 py-3 bg-[#080c14] border-b border-slate-800 flex items-center justify-between">
-              <div class="flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
-                <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
-                <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-                <span class="text-xs text-slate-400 code-font ml-2 font-medium">pipeline_orchestrator.py</span>
-              </div>
-              <span class="text-[10px] code-font px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">AGENT_ACTIVE</span>
-            </div>
-
-            <!-- Code/Terminal Body -->
-            <div class="p-5 font-mono text-xs space-y-3.5 leading-relaxed bg-[#0a0e17]">
-              <div>
-                <span class="text-slate-500"># System Configuration</span><br>
-                <span class="text-purple-400">from</span> <span class="text-sky-300">langchain_core.prompts</span> <span class="text-purple-400">import</span> <span class="text-white">ChatPromptTemplate</span><br>
-                <span class="text-purple-400">from</span> <span class="text-sky-300">langgraph.graph</span> <span class="text-purple-400">import</span> <span class="text-white">StateGraph, END</span>
-              </div>
-
-              <div class="p-2.5 rounded bg-[#0f1624] border border-slate-800/80 text-slate-300">
-                <div class="flex items-center justify-between text-[11px] text-slate-400 pb-1.5 border-b border-slate-800 mb-2">
-                  <span>RUNTIME NODE: <strong class="text-emerald-400">b2b_retrieval_agent</strong></span>
-                  <span class="text-sky-400">vLLM / Ollama</span>
-                </div>
-                <p class="text-emerald-300 font-sans text-xs">
-                  <i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Synthesized 2,400+ corporate filings into verified vector embeddings.
-                </p>
-                <p class="text-slate-400 font-sans text-[11px] mt-1">
-                  Latency: <span class="text-sky-300 code-font">218ms</span> | Precision: <span class="text-sky-300 code-font">99.4%</span> | State: <span class="text-emerald-400 code-font">CONVERGED</span>
-                </p>
-              </div>
-
-              <div class="space-y-1.5">
-                <div class="flex items-center justify-between text-slate-400 text-[11px]">
-                  <span>LLM Memory & Cache:</span>
-                  <span class="text-white font-medium">Synchronized</span>
-                </div>
-                <div class="w-full bg-slate-800 rounded-full h-1.5">
-                  <div class="bg-gradient-to-r from-sky-400 to-indigo-500 h-1.5 rounded-full" style="width: 92%"></div>
-                </div>
-              </div>
-
-              <div class="pt-1 text-[11px] text-slate-400 flex items-center justify-between border-t border-slate-800/80">
-                <span class="flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                  Model: <span class="text-slate-200 font-semibold">Llama-3-70B-Instruct</span>
-                </span>
-                <span class="text-indigo-400">Zero Hallucination Mode</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 01: Core Architecture & Technical Arsenal -->
-  <section id="skills" class="py-20 border-t border-slate-800/60 bg-[#080c14]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Section Title -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-        <div>
-          <div class="code-font text-xs text-indigo-400 font-semibold tracking-wider uppercase mb-1">01 // Architectural Capabilities</div>
-          <h2 class="text-3xl font-bold text-white tracking-tight">Enterprise AI Engineering Stack</h2>
-        </div>
-        <p class="text-slate-400 text-sm max-w-md mt-3 md:mt-0">
-          Engineered for production scale, deterministic precision, and seamless integration between generative models and enterprise backend infrastructure.
-        </p>
-      </div>
-
-      <!-- Bento Grid of Skills -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        
-        <!-- Card 1 -->
-        <div class="glass-card rounded-xl p-6 relative flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 mb-4 text-base">
-              <i class="fa-solid fa-network-wired"></i>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">Agentic Frameworks</h3>
-            <p class="text-xs text-slate-400 leading-relaxed mb-4">
-              Building autonomous multi-agent loops, state graphs, dynamic function calling, and self-correcting cognitive routines.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800/80">
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-sky-300">LangGraph</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-sky-300">CrewAI</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-sky-300">LangChain</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-sky-300">AutoAgents</span>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="glass-card rounded-xl p-6 relative flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 mb-4 text-base">
-              <i class="fa-solid fa-database"></i>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">RAG & Vector Retrieval</h3>
-            <p class="text-xs text-slate-400 leading-relaxed mb-4">
-              Designing contextual search pipelines, hybrid sparse/dense embeddings, multi-stage reranking, and semantic chunking.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800/80">
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-indigo-300">LlamaIndex</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-indigo-300">Vector Embeddings</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-indigo-300">Hybrid Search</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-indigo-300">Prompt Eng</span>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="glass-card rounded-xl p-6 relative flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4 text-base">
-              <i class="fa-solid fa-microchip"></i>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">Runtimes & Cloud LLMs</h3>
-            <p class="text-xs text-slate-400 leading-relaxed mb-4">
-              Deploying on local inference runtimes with vLLM/Ollama as well as multi-provider enterprise cloud APIs.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800/80">
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-emerald-300">vLLM</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-emerald-300">Ollama</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-emerald-300">NVIDIA APIs</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-emerald-300">OpenAI</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-emerald-300">Hugging Face</span>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="glass-card rounded-xl p-6 relative flex flex-col justify-between">
-          <div>
-            <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-4 text-base">
-              <i class="fa-solid fa-gears"></i>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">Automation & Backend</h3>
-            <p class="text-xs text-slate-400 leading-relaxed mb-4">
-              Building enterprise integration workflows, REST API handlers, SQL data transformation, and continuous incident management.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800/80">
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-amber-300">Python</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-amber-300">n8n Workflows</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-amber-300">SQL</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-amber-300">Git / Jira</span>
-            <span class="px-2 py-0.5 rounded text-[11px] code-font bg-slate-800/80 text-amber-300">Agile / RCA</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 02: Featured Engineering Projects -->
-  <section id="projects" class="py-20 border-t border-slate-800/60 bg-[#070a11]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="mb-12">
-        <div class="code-font text-xs text-indigo-400 font-semibold tracking-wider uppercase mb-1">02 // Production Implementations</div>
-        <h2 class="text-3xl font-bold text-white tracking-tight">Featured Engineering Systems</h2>
-      </div>
-
-      <div class="space-y-8">
-        
-        <!-- Project 1: SJ Power UP Tool -->
-        <div class="glass-card rounded-2xl p-7 lg:p-9 border border-slate-800 relative overflow-hidden">
-          <div class="absolute -right-20 -top-20 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
-          
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <div class="lg:col-span-8 space-y-4">
-              <div class="flex items-center gap-3 flex-wrap">
-                <span class="px-2.5 py-1 rounded-md text-xs font-semibold code-font bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">FLAGSHIP ARCHITECTURE</span>
-                <span class="text-xs text-slate-400 code-font">Browser Extension • API Gateway</span>
-              </div>
-
-              <h3 class="text-2xl font-bold text-white tracking-tight">
-                SJ Power UP Tool — Multi-Provider LLM Prompt Orchestration System
-              </h3>
-
-              <p class="text-slate-300 text-sm leading-relaxed">
-                Engineered an intelligent prompt engineering and execution platform interfacing directly with multi-provider LLM APIs (including NVIDIA NIM, OpenAI, and custom inference backends). Designed to accelerate high-complexity prompt iteration with streaming completions and deterministic structured outputs.
-              </p>
-
-              <div class="space-y-2 pt-1 text-xs text-slate-300">
-                <div class="flex items-start gap-2">
-                  <i class="fa-solid fa-check-circle text-emerald-400 mt-0.5"></i>
-                  <span><strong>Dynamic Template Engine:</strong> Implemented variable injection, slot filling, and system prompt inheritance logic.</span>
-                </div>
-                <div class="flex items-start gap-2">
-                  <i class="fa-solid fa-check-circle text-emerald-400 mt-0.5"></i>
-                  <span><strong>Secure Credential Isolation:</strong> Zero-leakage client-side vault for API keys with custom header authorization.</span>
-                </div>
-                <div class="flex items-start gap-2">
-                  <i class="fa-solid fa-check-circle text-emerald-400 mt-0.5"></i>
-                  <span><strong>Streaming & Serialization:</strong> Server-Sent Events (SSE) streaming with automated JSON schema validation.</span>
-                </div>
-              </div>
-
-              <div class="flex flex-wrap gap-2 pt-3">
-                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs code-font text-sky-300">Python</span>
-                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs code-font text-sky-300">NVIDIA Cloud APIs</span>
-                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs code-font text-sky-300">OpenAI API</span>
-                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs code-font text-sky-300">Browser Extension APIs</span>
-                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs code-font text-sky-300">JSON Schema</span>
-              </div>
-            </div>
-
-            <!-- Project Specs Box -->
-            <div class="lg:col-span-4 p-5 rounded-xl bg-[#0b0f19] border border-slate-800/90 space-y-4">
-              <div class="text-xs font-bold code-font text-slate-300 pb-2 border-b border-slate-800 uppercase tracking-wider flex items-center justify-between">
-                <span>System Architecture</span>
-                <i class="fa-solid fa-microchip text-indigo-400"></i>
-              </div>
-
-              <div class="space-y-3 text-xs">
-                <div>
-                  <span class="text-slate-400 block text-[11px]">Primary Function:</span>
-                  <span class="text-white font-medium">Prompt Engineering & Multi-LLM Routing</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block text-[11px]">Latency Target:</span>
-                  <span class="text-emerald-400 font-mono font-medium">Sub-300ms initial token response</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block text-[11px]">Security Standard:</span>
-                  <span class="text-white font-medium">Local Client-Side Key Storage</span>
-                </div>
-                <div>
-                  <span class="text-slate-400 block text-[11px]">Integrations:</span>
-                  <span class="text-sky-300 font-mono">NVIDIA, OpenAI, Custom Endpoints</span>
-                </div>
-              </div>
-
-              <a href="https://github.com/sjpavan" target="_blank" class="w-full mt-2 inline-flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 text-xs font-semibold code-font transition">
-                <i class="fa-brands fa-github"></i>
-                <span>Inspect Repository</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 2: Autonomous B2B Extraction Pipeline -->
-        <div class="glass-card rounded-2xl p-7 lg:p-9 border border-slate-800 relative overflow-hidden">
-          <div class="absolute -right-20 -top-20 w-80 h-80 bg-sky-600/10 rounded-full blur-3xl pointer-events-none"></div>
-          
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <div class="lg:col-span-8 space-y-4">
-              <div class="flex items-center gap-3 flex-wrap">
-                <span class="px-2.5 py-1 rounded-md text-xs font-semibold code-font bg-sky-500/10 text-sky-400 border border-sky-500/20">AGENTIC RAG PIPELINE</span>
-                <span class="text-xs text-slate-400 code-font">Vector Search • Autonomous Scraper</span>
-              </div>
-
-              <h3 class="text-2xl font-bold text-white tracking-tight">
-                Autonomous B2B Intelligence & Web Extraction Pipeline
-              </h3>
-
-              <p class="text-slate-300 text-sm leading-relaxed">
-                Architected a high-throughput Python data intelligence pipeline powered by LangChain agents to autonomously audit corporate domains, extract firmographics, and categorize business operations into structured datasets.
-              </p>
-
-              <div class="space-y-2 pt-1 text-xs text-slate-300">
-                <div class="flex items-start gap-2">
-                  <i class="fa-solid fa-check-circle text-sky-400 mt-0.5"></i>
-                  <span><strong>Vector Search & RAG:</strong> Summarizes multi-page corporate disclosures and news feeds into executive intelligence briefs.</span>
-                </div>
-                <div class="flex items-start gap-2">
-                  <i class="fa-solid fa-check-circle text-sky-400 mt-0.5"></i>
-                  <span><strong>60% Overhead Elimination:</strong> Replaced repetitive manual research workflows with continuous automated scraping and validation loops.</span>
-                </div>
-                <div class="flex items-start gap-2">
-                  <i class="fa-solid fa-check-circle text-sky-400 mt-0.5"></i>
-                  <span><strong>Data Verification Standards:</strong> Cross-validated extracted entities against corporate databases to guarantee high schema compliance.</span>
-                </div>
-              </div>
-
-              <div class="flex flex-wrap gap-2 pt-3">
-                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs code-font text-emerald-300">LangChain</span>
-                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs code-font text-emerald-300">RAG Patterns</span>
-                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs code-font text-emerald-300">Vector Search</span>
-                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs code-font text-emerald-300">Python Async</span>
-                <span class="px-2.5 py-1 rounded bg-slate-800 text-xs code-font text-emerald-300">Firmographics</span>
-              </div>
-            </div>
-
-            <!-- Impact Metric Highlight -->
-            <div class="lg:col-span-4 p-5 rounded-xl bg-[#0b0f19] border border-slate-800/90 space-y-4">
-              <div class="text-xs font-bold code-font text-slate-300 pb-2 border-b border-slate-800 uppercase tracking-wider flex items-center justify-between">
-                <span>Verified Impact</span>
-                <i class="fa-solid fa-chart-line text-sky-400"></i>
-              </div>
-
-              <div class="space-y-3">
-                <div class="p-3 rounded-lg bg-sky-950/30 border border-sky-800/40">
-                  <div class="text-2xl font-bold text-sky-400 code-font">-60%</div>
-                  <div class="text-xs text-slate-300 font-medium mt-0.5">Manual Labor Reduced</div>
-                  <p class="text-[11px] text-slate-400 mt-1">Directly automated hours of manual analyst cross-referencing.</p>
-                </div>
-
-                <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
-                  <div class="text-lg font-bold text-white code-font">Enterprise Grade</div>
-                  <div class="text-xs text-slate-400 mt-0.5">High-integrity structured JSON outputs formatted for immediate executive consumption.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3: Medical Texture Analysis -->
-        <div class="glass-card rounded-2xl p-7 lg:p-8 border border-slate-800">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-            <div class="lg:col-span-9 space-y-2.5">
-              <div class="flex items-center gap-2">
-                <span class="px-2 py-0.5 rounded text-[11px] font-semibold code-font bg-slate-800 text-slate-300">SCIENTIFIC COMPUTING</span>
-                <span class="text-xs text-slate-400">Academic Engineering Project</span>
-              </div>
-              <h3 class="text-xl font-bold text-white">
-                Texture Analysis for Medical Diagnostic Imaging (Osteoporosis Detection)
-              </h3>
-              <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Formulated an image processing and spatial texture extraction algorithm in MATLAB to isolate subtle micro-architectural bone density variations, enabling early diagnostic markers for osteoporosis in medical X-ray scans.
-              </p>
-              <div class="flex flex-wrap gap-2 pt-1">
-                <span class="px-2 py-0.5 rounded bg-slate-800/80 text-[11px] code-font text-slate-300">MATLAB</span>
-                <span class="px-2 py-0.5 rounded bg-slate-800/80 text-[11px] code-font text-slate-300">Computer Vision</span>
-                <span class="px-2 py-0.5 rounded bg-slate-800/80 text-[11px] code-font text-slate-300">Spatial Gray-Level Matrices</span>
-                <span class="px-2 py-0.5 rounded bg-slate-800/80 text-[11px] code-font text-slate-300">Biomedical Analysis</span>
-              </div>
-            </div>
-            <div class="lg:col-span-3 text-right hidden lg:block">
-              <div class="w-16 h-16 ml-auto rounded-xl bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-400 text-2xl">
-                <i class="fa-solid fa-dna text-indigo-400"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 03: Interactive AI Terminal & Simulated Console -->
-  <section id="terminal" class="py-20 border-t border-slate-800/60 bg-[#080c14]">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <div class="code-font text-xs text-sky-400 font-semibold tracking-wider uppercase mb-1">03 // Interactive Intelligence</div>
-        <h2 class="text-3xl font-bold text-white tracking-tight">Pavan AI Agent Console</h2>
-        <p class="text-slate-400 text-xs sm:text-sm mt-2">
-          Click any query button or type an instruction into the simulated agent console below to inspect my architecture mindset in real time.
-        </p>
-      </div>
-
-      <!-- Terminal Component -->
-      <div class="rounded-2xl border border-slate-800 bg-[#0a0e17] shadow-2xl overflow-hidden">
-        <!-- Terminal Bar -->
-        <div class="px-4 py-3 bg-[#0e1422] border-b border-slate-800 flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
-            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
-            <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
-            <span class="text-xs text-slate-400 code-font ml-3 font-semibold">pavan-agent-cli (v2.4-stable)</span>
-          </div>
-          <span class="text-[10px] code-font text-emerald-400 flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-            CONNECTED
-          </span>
-        </div>
-
-        <!-- Quick Query Buttons -->
-        <div class="p-3 bg-[#0d121f] border-b border-slate-800 flex items-center gap-2 flex-wrap text-xs code-font">
-          <span class="text-slate-400 text-[11px] mr-1">Pre-loaded queries:</span>
-          <button onclick="runQuery('rag')" class="px-2.5 py-1 rounded bg-indigo-950/60 hover:bg-indigo-900/60 text-indigo-300 border border-indigo-800/60 transition">
-            $ query --rag-architecture
-          </button>
-          <button onclick="runQuery('agents')" class="px-2.5 py-1 rounded bg-sky-950/60 hover:bg-sky-900/60 text-sky-300 border border-sky-800/60 transition">
-            $ query --autonomous-agents
-          </button>
-          <button onclick="runQuery('experience')" class="px-2.5 py-1 rounded bg-emerald-950/60 hover:bg-emerald-900/60 text-emerald-300 border border-emerald-800/60 transition">
-            $ query --career-impact
-          </button>
-          <button onclick="runQuery('contact')" class="px-2.5 py-1 rounded bg-purple-950/60 hover:bg-purple-900/60 text-purple-300 border border-purple-800/60 transition">
-            $ query --contact-info
-          </button>
-        </div>
-
-        <!-- Terminal Output Area -->
-        <div id="terminal-screen" class="p-5 font-mono text-xs sm:text-sm text-slate-300 min-h-[260px] max-h-[400px] overflow-y-auto space-y-3">
-          <div class="text-slate-500">
-            [System Initialized] Neural knowledge engine loaded.<br>
-            Type <span class="text-sky-300 font-semibold">'help'</span> or select one of the query tags above to run an inspection.
-          </div>
-        </div>
-
-        <!-- Terminal Input Line -->
-        <div class="p-3 bg-[#0d121f] border-t border-slate-800 flex items-center gap-2 font-mono text-xs sm:text-sm">
-          <span class="text-emerald-400 font-bold">pavan@ai-system:~$</span>
-          <input type="text" id="terminal-input" placeholder="Type 'rag', 'agents', 'experience', or 'help' and press Enter..." 
-                 class="flex-1 bg-transparent border-none outline-none text-white placeholder-slate-500 code-font text-xs sm:text-sm"
-                 onkeydown="if(event.key === 'Enter') handleInput()">
-          <button onclick="handleInput()" class="px-3 py-1 rounded bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold code-font transition">
-            Send
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Section 04: Professional Experience & Career Milestones -->
-  <section id="experience" class="py-20 border-t border-slate-800/60 bg-[#070a11]">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="mb-12">
-        <div class="code-font text-xs text-indigo-400 font-semibold tracking-wider uppercase mb-1">04 // Track Record</div>
-        <h2 class="text-3xl font-bold text-white tracking-tight">Professional Experience</h2>
-      </div>
-
-      <div class="relative border-l-2 border-slate-800 ml-4 md:ml-8 space-y-12">
-        
-        <!-- Role 1 -->
-        <div class="relative pl-6 md:pl-10">
-          <!-- Timeline Pin -->
-          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-[#070a11] border-2 border-indigo-400">
-            <div class="w-1.5 h-1.5 rounded-full bg-indigo-400 mx-auto mt-0.5"></div>
-          </div>
-
-          <div class="glass-card rounded-xl p-6 border border-slate-800">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-              <h3 class="text-lg font-bold text-white">Technology Process Executive</h3>
-              <span class="code-font text-xs text-indigo-400 font-semibold px-2.5 py-0.5 rounded bg-indigo-500/10 border border-indigo-500/20 w-fit">
-                Oct 2023 — Present
-              </span>
-            </div>
-            
-            <div class="text-sm font-medium text-sky-400 mb-4">
-              Silicon Media Technologies Pvt. Ltd. • Bengaluru, India
-            </div>
-
-            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-angle-right text-indigo-400 mt-1 text-xs"></i>
-                <span>Direct enterprise technology research, competitor benchmarking, and market data audits across B2B publications.</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-angle-right text-indigo-400 mt-1 text-xs"></i>
-                <span>Synthesize multi-source datasets into executive-ready reports with strict verification, lineage, and compliance standards.</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-angle-right text-indigo-400 mt-1 text-xs"></i>
-                <span>Spearhead internal process automation initiatives using custom Python scripts and prompt templates, drastically cutting recurring data cycle times.</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-angle-right text-indigo-400 mt-1 text-xs"></i>
-                <span>Partner cross-functionally with editorial, research, and engineering teams to resolve data pipeline discrepancies and escalate operational throughput.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Role 2 -->
-        <div class="relative pl-6 md:pl-10">
-          <!-- Timeline Pin -->
-          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-[#070a11] border-2 border-slate-600">
-            <div class="w-1.5 h-1.5 rounded-full bg-slate-500 mx-auto mt-0.5"></div>
-          </div>
-
-          <div class="glass-card rounded-xl p-6 border border-slate-800">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
-              <h3 class="text-lg font-bold text-white">Digital Interaction Advisor</h3>
-              <span class="code-font text-xs text-slate-400 font-semibold px-2.5 py-0.5 rounded bg-slate-800/80 border border-slate-700 w-fit">
-                Aug 2022 — Dec 2022
-              </span>
-            </div>
-            
-            <div class="text-sm font-medium text-slate-400 mb-4">
-              [24]7.ai • Bengaluru, India
-            </div>
-
-            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-angle-right text-slate-500 mt-1 text-xs"></i>
-                <span>Delivered omnichannel enterprise technical support, managing high-throughput platform issues under strict SLAs.</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-angle-right text-slate-500 mt-1 text-xs"></i>
-                <span>Maintained top-tier First Contact Resolution (FCR) and Customer Satisfaction (CSAT) metrics via rigorous troubleshooting.</span>
-              </li>
-              <li class="flex items-start gap-2.5">
-                <i class="fa-solid fa-angle-right text-slate-500 mt-1 text-xs"></i>
-                <span>Documented technical anomalies and partnered with Tier-2 software engineering teams to streamline bug escalation pathways.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Section 05: Academic Foundation & Core Credentials -->
-  <section class="py-16 border-t border-slate-800/60 bg-[#080c14]">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <!-- Degree -->
-        <div class="glass-card p-6 rounded-xl border border-slate-800">
-          <div class="text-xs code-font text-indigo-400 font-semibold mb-1">DEGREE QUALIFICATION</div>
-          <h4 class="text-base font-bold text-white">B.Tech in Electronics & Communication (ECE)</h4>
-          <p class="text-xs text-slate-400 mt-1">Sri Venkateswara College of Engineering & Tech</p>
-          <div class="mt-4 flex items-center justify-between text-xs code-font">
-            <span class="text-slate-400">Year: 2020</span>
-            <span class="text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-950/40 border border-emerald-800/50">Aggregate: 70%</span>
-          </div>
-        </div>
-
-        <!-- Intermediate -->
-        <div class="glass-card p-6 rounded-xl border border-slate-800">
-          <div class="text-xs code-font text-sky-400 font-semibold mb-1">HIGHER SECONDARY</div>
-          <h4 class="text-base font-bold text-white">Intermediate (MPC)</h4>
-          <p class="text-xs text-slate-400 mt-1">Board of Intermediate Education, Andhra Pradesh</p>
-          <div class="mt-4 flex items-center justify-between text-xs code-font">
-            <span class="text-slate-400">Year: 2016</span>
-            <span class="text-sky-400 font-bold px-2 py-0.5 rounded bg-sky-950/40 border border-sky-800/50">Aggregate: 70%</span>
-          </div>
-        </div>
-
-        <!-- Secondary -->
-        <div class="glass-card p-6 rounded-xl border border-slate-800">
-          <div class="text-xs code-font text-emerald-400 font-semibold mb-1">FOUNDATION</div>
-          <h4 class="text-base font-bold text-white">Secondary School Certificate (SSC)</h4>
-          <p class="text-xs text-slate-400 mt-1">Board of Secondary Education, Andhra Pradesh</p>
-          <div class="mt-4 flex items-center justify-between text-xs code-font">
-            <span class="text-slate-400">Year: 2014</span>
-            <span class="text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-950/40 border border-emerald-800/50">Aggregate: 83%</span>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Section 06: Contact & Direct Channels -->
-  <section id="contact" class="py-20 border-t border-slate-800/60 bg-[#070a11] relative">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-      
-      <div class="space-y-3">
-        <div class="code-font text-xs text-indigo-400 font-semibold tracking-wider uppercase">06 // Initiate Connection</div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Let’s Build High-Impact AI Systems Together.
-        </h2>
-        <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
-          Currently based in Bengaluru, Karnataka, India. Open for AI Engineering, LLM Systems, and Process Automation roles.
-        </p>
-      </div>
-
-      <!-- Contact Cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left pt-4">
-        
-        <!-- Email -->
-        <a href="mailto:pavandilip003@gmail.com" class="glass-card p-4 rounded-xl border border-slate-800 hover:border-indigo-500/50 block group">
-          <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-2 text-sm">
-            <i class="fa-solid fa-envelope"></i>
-          </div>
-          <div class="text-[11px] code-font text-slate-400">Direct Email</div>
-          <div class="text-xs font-semibold text-white truncate group-hover:text-indigo-400 transition">
-            pavandilip003@gmail.com
-          </div>
-        </a>
-
-        <!-- Phone -->
-        <a href="tel:+916300648679" class="glass-card p-4 rounded-xl border border-slate-800 hover:border-sky-500/50 block group">
-          <div class="w-8 h-8 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center mb-2 text-sm">
-            <i class="fa-solid fa-phone"></i>
-          </div>
-          <div class="text-[11px] code-font text-slate-400">Phone / WhatsApp</div>
-          <div class="text-xs font-semibold text-white group-hover:text-sky-400 transition">
-            +91 6300648679
-          </div>
-        </a>
-
-        <!-- LinkedIn -->
-        <a href="https://linkedin.com/in/pavansi3" target="_blank" class="glass-card p-4 rounded-xl border border-slate-800 hover:border-blue-500/50 block group">
-          <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center mb-2 text-sm">
-            <i class="fa-brands fa-linkedin"></i>
-          </div>
-          <div class="text-[11px] code-font text-slate-400">LinkedIn Profile</div>
-          <div class="text-xs font-semibold text-white group-hover:text-blue-400 transition">
-            linkedin.com/in/pavansi3
-          </div>
-        </a>
-
-        <!-- GitHub -->
-        <a href="https://github.com/sjpavan" target="_blank" class="glass-card p-4 rounded-xl border border-slate-800 hover:border-slate-500 block group">
-          <div class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 flex items-center justify-center mb-2 text-sm">
-            <i class="fa-brands fa-github"></i>
-          </div>
-          <div class="text-[11px] code-font text-slate-400">GitHub Profile</div>
-          <div class="text-xs font-semibold text-white group-hover:text-slate-300 transition">
-            github.com/sjpavan
-          </div>
-        </a>
-
-      </div>
-
-      <!-- Quick Copy Notification -->
-      <div class="pt-4">
-        <button onclick="copyToClipboard('pavandilip003@gmail.com', this)" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs code-font font-medium transition">
-          <i class="fa-regular fa-clone"></i>
-          <span>Copy Email Address</span>
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="py-8 border-t border-slate-800 bg-[#06080e] text-center text-xs text-slate-500 code-font">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        Designed & Built for S J Pavan • Applied AI & LLM Systems Engineer
-      </div>
-      <div class="text-slate-400 text-[11px]">
-        Bengaluru, India • Clean Vanilla JS & Tailwind CSS
-      </div>
-    </div>
-  </footer>
-
-  <!-- Interactive Terminal Script -->
-  <script>
-    const knowledgeBase = {
-      rag: `\n[Agent Response: RAG Architecture]\n----------------------------------------\n• Vector Retrieval: Experienced in LlamaIndex & LangChain retrieval engines.\n• Embeddings: Dense text vectorization & sparse keyword hybrid re-ranking.\n• Production Utility: Built an autonomous B2B extraction pipeline summarizing massive filings into structured intelligence, reducing manual analyst overhead by 60%.\n`,
-      agents: `\n[Agent Response: Autonomous Multi-Agent Systems]\n----------------------------------------\n• Frameworks: LangGraph (state machines & cyclic graphs), CrewAI (role-based agent teams), and LangChain Agents.\n• Function Calling: Dynamic tool integration, structured JSON validation, dynamic memory buffers.\n• Key Project: SJ Power UP Tool multi-provider prompt orchestration extension with NVIDIA & OpenAI endpoints.\n`,
-      experience: `\n[Agent Response: Career & Operational Execution]\n----------------------------------------\n• Current Role: Technology Process Executive at Silicon Media Technologies Pvt. Ltd. (Oct 2023 - Present).\n• Core Impact: Directs market data auditing, benchmarks B2B tech publications, and deploys custom Python + prompt automation scripts.\n• Prior Role: Digital Interaction Advisor at [24]7.ai (High-volume enterprise technical troubleshooting).\n`,
-      contact: `\n[Agent Response: Direct Communication Channels]\n----------------------------------------\n• Name: S J Pavan\n• Location: Bengaluru, Karnataka, India\n• Email: pavandilip003@gmail.com\n• Phone: +91 6300648679\n• LinkedIn: linkedin.com/in/pavansi3\n• GitHub: github.com/sjpavan\n`,
-      help: `\nAvailable commands:\n• rag         : Inspect RAG pipeline & vector retrieval stack\n• agents      : View LangGraph, CrewAI & autonomous agent orchestration\n• experience  : Review enterprise roles and quantified operational impacts\n• contact     : Display direct contact coordinates\n• clear       : Clear terminal screen\n`
-    };
-
-    function appendOutput(text, isCommand = false) {
-      const screen = document.getElementById('terminal-screen');
-      const div = document.createElement('div');
-      div.className = isCommand ? 'text-sky-400 font-semibold mt-2' : 'text-slate-300 leading-relaxed whitespace-pre-wrap';
-      div.innerText = text;
-      screen.appendChild(div);
-      screen.scrollTop = screen.scrollHeight;
-    }
-
-    function runQuery(topic) {
-      appendOutput(`pavan@ai-system:~$ query --${topic}`, true);
-      setTimeout(() => {
-        if (knowledgeBase[topic]) {
-          appendOutput(knowledgeBase[topic]);
-        }
-      }, 150);
-    }
-
-    function handleInput() {
-      const input = document.getElementById('terminal-input');
-      const val = input.value.trim().toLowerCase();
-      if (!val) return;
-
-      appendOutput(`pavan@ai-system:~$ ${val}`, true);
-      input.value = '';
-
-      if (val === 'clear') {
-        document.getElementById('terminal-screen').innerHTML = '';
-        return;
-      }
-
-      setTimeout(() => {
-        if (knowledgeBase[val]) {
-          appendOutput(knowledgeBase[val]);
-        } else if (val.includes('rag')) {
-          appendOutput(knowledgeBase['rag']);
-        } else if (val.includes('agent') || val.includes('crew') || val.includes('langgraph')) {
-          appendOutput(knowledgeBase['agents']);
-        } else if (val.includes('job') || val.includes('work') || val.includes('exp')) {
-          appendOutput(knowledgeBase['experience']);
-        } else if (val.includes('mail') || val.includes('call') || val.includes('reach') || val.includes('contact')) {
-          appendOutput(knowledgeBase['contact']);
-        } else {
-          appendOutput(`Command not recognized: '${val}'. Type 'help' for available queries.`);
-        }
-      }, 180);
-    }
-
-    function copyToClipboard(text, btn) {
-      navigator.clipboard.writeText(text).then(() => {
-        const originalText = btn.innerHTML;
-        btn.innerHTML = `<i class="fa-solid fa-check text-emerald-400"></i> Copied to Clipboard!`;
-        btn.classList.add('bg-emerald-950', 'text-emerald-300', 'border-emerald-600');
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.classList.remove('bg-emerald-950', 'text-emerald-300', 'border-emerald-600');
-        }, 2000);
-      });
-    }
-  </script>
 </body>
 </html>
